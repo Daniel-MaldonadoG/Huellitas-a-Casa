@@ -1,0 +1,150 @@
+/* =========================================================
+   ESTILOS EXCLUSIVOS DE reportar.html
+   (extraídos del <style> que estaba embebido en el HTML)
+   ========================================================= */
+
+/* Contenedor centralizado para que el formulario no se estire a los lados */
+.form-container-mock {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.form-box-mock {
+    background: white;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.form-box-mock h2 {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.form-box-mock .subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.form-group-mock {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group-mock label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1e293b;
+}
+
+/* Ajuste estricto para que los inputs sean visibles y dejen escribir */
+.form-group-mock input,
+.form-group-mock select,
+.form-group-mock textarea {
+    width: 100%;
+    box-sizing: border-box; /* Evita que se desborden */
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #f8fafc;
+    color: #334155;
+    transition: all 0.2s;
+}
+
+.form-group-mock input:focus,
+.form-group-mock select:focus,
+.form-group-mock textarea:focus {
+    border-color: #7f32d4; /* Morado principal */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(127, 50, 212, 0.1);
+}
+
+.form-group-mock input[type="file"] {
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.form-hint {
+    margin-top: 6px;
+    font-size: 0.78rem;
+    color: #94a3b8;
+}
+
+/* Estilos del rectángulo del mapa integrado (mock, sin uso actualmente) */
+.mapa-simulado-mock {
+    position: relative;
+    background-color: #b9e3de;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 5px;
+}
+.map-grid-lines {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+    background-size: 30px 30px;
+}
+.map-center-marker {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+}
+.map-overlay-text {
+    position: absolute;
+    bottom: 10px; left: 10px; right: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.map-overlay-text p { margin: 0; font-weight: bold; color: #1e293b; }
+
+/* Botón de envío */
+.btn-enviar-mock {
+    width: 100%;
+    padding: 14px;
+    background-color: #7f32d4;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+.btn-enviar-mock:hover {
+    background-color: #6924b3;
+}
+
+/* =========================================================
+   RESPONSIVE - Formulario de reporte
+   ========================================================= */
+@media (max-width: 480px) {
+    .form-container-mock {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+    .form-box-mock {
+        padding: 22px;
+    }
+    .form-box-mock h2 {
+        font-size: 1.5rem;
+    }
+}

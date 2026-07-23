@@ -1,0 +1,968 @@
+
+:root {
+    --purple-main: #7f32d4;
+    --green-main: #00cca3;
+    --text-dark: #23272a;
+    --bg-light: #f6f8fa;
+    --bg-purple-light: #f5f0ff;
+    --bg-green-light: #d1f4ed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-padding-top: 70px; /* Evita que el navbar fijo tape el titulo al saltar a una seccion */
+}
+
+/* Refuerzo puntual para las secciones que reciben saltos por enlace
+   (ademas del scroll-padding-top general de arriba) */
+#stories-section,
+#seccion-mapa,
+#main-footer {
+    scroll-margin-top: 70px;
+}
+
+body {
+    background-color: white;
+    color: var(--text-dark);
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: white;
+}
+
+.navbar {
+    position: fixed;        /* 👈 Hace que el header se quede congelado en la pantalla */
+    top: 0;                 /* 👈 Lo pega estrictamente al borde superior */
+    left: 0;
+    width: 100%;            /* 👈 Asegura que cubra todo el ancho de la pantalla */
+    z-index: 1000;          /* 👈 Lo pone por encima del mapa y de las tarjetas para que nada lo tape */
+    
+    /* Tus otros estilos (background-color, padding, flex, etc.) se quedan igual */
+    background-color: #ffffff; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Una sombra sutil para que se despegue del fondo al bajar */
+}
+
+.navbar .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2e7d5c;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #65676b;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.navbar nav a.active {
+    color: var(--purple-main);
+}
+
+.navbar nav a.btn-report-lost {
+    background-color: var(--purple-main);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* HERO SECTION */
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 60px 8%;
+    padding-top: 120px; /* Para compensar el header fijo */
+    align-items: center;
+    background: linear-gradient(to bottom, #f9f6ff, white);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 .highlight {
+    color: #1b8a5a;
+}
+
+.hero-content p {
+    color: #57606a;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-primary-purple {
+    background-color: var(--purple-main);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(127, 50, 212, 0.2);
+}
+
+.btn-secondary-green {
+    background-color: var(--green-main);
+    color: #05483a;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero-image-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.img-dog-hero {
+    width: 85%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 32px;
+}
+
+.floating-badge {
+    position: absolute;
+    bottom: -15px;
+    left: 10%;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.badge-title { font-weight: bold; color: #1b8a5a; font-size: 0.9rem; }
+.badge-desc { color: #57606a; font-size: 0.8rem; }
+
+/* STATS */
+.stats-section {
+    padding: 40px 8%;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.stat-card {
+    background-color: #fafbfc;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #edf0f2;
+}
+
+.stat-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.stat-card h2 { font-size: 2.5rem; color: #1b8a5a; margin-bottom: 5px; font-weight: 800; }
+.stat-card p { color: #57606a; font-weight: 500; }
+
+/* CATALOGO MASCOTAS */
+.catalog-section {
+    padding: 60px 8%;
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+}
+
+.catalog-header h2 { font-size: 2rem; font-weight: 800; }
+.catalog-header p { color: #57606a; margin-top: 5px; }
+.view-all { color: #0077ff; text-decoration: none; font-weight: 600; }
+
+.mascotas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.pet-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border: 1px solid #edf0f2;
+}
+
+.pet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.pet-status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.pet-status.perdido { background-color: var(--purple-main); }
+.pet-status.encontrado { background-color: var(--green-main); color: #05483a; }
+
+.pet-info { padding: 20px; }
+.pet-info h3 { font-size: 1.3rem; margin-bottom: 5px; }
+.pet-location { font-size: 0.85rem; color: #57606a; margin-bottom: 15px; }
+
+.pet-tags { display: flex; gap: 8px; margin-bottom: 20px; }
+.pet-tags span {
+    background-color: #f1f3f5;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #47505a;
+}
+
+.btn-details {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid #00cca3;
+    color: #05483a;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-details:hover { background-color: #e8fcf8; }
+
+/* FINALES FELICES */
+.stories-section {
+    background-color: #f6f1ff;
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.stories-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; }
+.stories-subtitle { color: #57606a; margin-bottom: 40px; }
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.story-card {
+    background: white;
+    border-radius: 24px;
+    padding: 30px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.quote-icon {
+    font-size: 4rem;
+    color: var(--purple-main);
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    font-family: Georgia, serif;
+    opacity: 0.3;
+}
+
+.story-layout {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.story-layout img {
+    width: 90px;
+    height: 90px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.story-layout p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.story-author {
+    display: block;
+    margin-top: 8px;
+    font-weight: bold;
+    color: var(--purple-main);
+}
+
+/* CONTENEDOR PRINCIPAL DEL MAPA */
+.map-section {
+    padding: 60px 8%;
+}
+
+.map-container-mock {
+    position: relative;
+    background-color: #b9e3de; /* El fondo verde esmeralda claro de tu diseño */
+    height: 380px;
+    border-radius: 32px; /* Bordes muy redondeados como el mockup */
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* CUADRÍCULA DE CALLES SIMULADAS */
+.map-grid-lines {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+    background-size: 45px 45px; /* Crea el efecto de mapa urbano */
+    opacity: 0.8;
+}
+
+/* LEYENDA FLOTANTE */
+.map-legend-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    max-width: 260px;
+    z-index: 3;
+}
+
+.map-legend-box h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.map-legend-box p {
+    font-size: 0.85rem;
+    color: #57606a;
+    margin-bottom: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot.purple { background-color: var(--purple-main); }
+.dot.green { background-color: var(--green-main); }
+
+/* CONFIGURACIÓN DE LOS PUNTOS INTERACTIVOS (YA NO FLOTAN) */
+.mock-pin {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    animation: pulsoUrbano 3s ease-in-out infinite alternate;
+}
+
+.mock-pin.pin-purple {
+    background-color: var(--purple-main);
+    border: 3px solid white;
+}
+
+.mock-pin.pin-green {
+    background-color: var(--green-main);
+    border: 3px solid white;
+}
+
+/* EFECTO DE MOVIMIENTO LEVE PARA LOS PUNTOS */
+@keyframes pulsoUrbano {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-4px) scale(1.05); }
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: #eaecef;
+    padding: 50px 8% 20px 8%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-brand h3 { font-size: 1.3rem; margin-bottom: 15px; color: #2e7d5c; }
+.footer-brand p { color: #57606a; font-size: 0.9rem; line-height: 1.5; max-width: 400px; }
+
+.footer-links h4 { margin-bottom: 15px; font-size: 1rem; }
+.footer-links a { display: block; color: #57606a; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+
+.footer-bottom {
+    border-top: 1px solid #1d5d34;
+    padding-top: 20px;
+    text-align: center;
+    color: #57606a;
+    font-size: 0.85rem;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(35, 39, 42, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {    
+    background: white;
+    width: 90%;
+    max-width: 700px; /* Un poco más ancho para que quepa todo holgadamente */
+    padding: 30px;
+    border-radius: 24px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: desplegarModal 0.3s ease-out;
+    box-sizing: border-box;
+}
+
+@keyframes desplegarModal {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 20px; right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.2s;
+    z-index: 10;
+}
+.close-modal-btn:hover { color: #1e293b; }
+
+/* CONTENEDOR PRINCIPAL EN DOS COLUMNAS */
+.modal-body-layout {
+    display: flex !important;
+    flex-direction: row !important; /* Foto a la izquierda, todo el texto a la derecha */
+    gap: 30px !important;
+    align-items: flex-start !important;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* COLUMNA IZQUIERDA: FOTO */
+.modal-body-layout img {
+    width: 260px !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    border-radius: 18px !important;
+    border: 1px solid #e2e8f0;
+    flex-shrink: 0 !important; /* Evita que la foto se encoja */
+}
+
+/* COLUMNA DERECHA: TEXTOS (INCLUYENDO EL NOMBRE) */
+.modal-text-info {
+    text-align: left !important;
+    flex: 1 !important; /* Ocupa todo el espacio derecho disponible */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Estilo para el nombre dentro de la columna */
+.modal-text-info h2 {
+    font-size: 2rem !important;
+    margin: 0 0 5px 0 !important; /* Elimina márgenes extraños que empujen el texto */
+    color: #1e293b;
+    font-weight: bold;
+}
+
+.modal-text-info hr {
+    border: 0; 
+    height: 1px; 
+    background: #e2e8f0; 
+    margin: 10px 0 15px 0 !important;
+    width: 100%;
+}
+
+/* Control estricto de los párrafos */
+.modal-text-info p {
+    margin: 0 0 10px 0 !important;
+    font-size: 0.95rem !important;
+    color: #334155 !important;
+    line-height: 1.5 !important;
+}
+
+.modal-warning-box {
+    margin-top: 15px;
+    background-color: var(--bg-purple-light);
+    padding: 12px;
+    border-radius: 12px;
+    border-left: 4px solid var(--purple-main);
+    width: 100%;
+    box-sizing: border-box;
+}
+.modal-warning-box p { margin: 0 !important; font-size: 0.85rem !important; }
+
+/* Diseño Responsivo Adaptable */
+@media (max-width: 640px) {
+    .modal-body-layout { 
+        flex-direction: column !important; 
+        align-items: center !important; 
+        gap: 20px !important;
+    }
+    .modal-body-layout img { 
+        width: 100% !important; 
+        max-width: 280px !important; 
+        height: 240px !important; 
+    }
+    .modal-text-info { width: 100%; }
+}
+/* Ajuste Responsivo para Celulares */
+@media (max-width: 620px) {
+    .modal-body-layout { 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 15px;
+    }
+    .modal-body-layout img { 
+        width: 100%; 
+        max-width: 260px; 
+        height: 220px; 
+    }
+    .modal-text-info { width: 100%; }
+}
+main-footer {
+    background-color: #1a1625; /* Cambiamos a un fondo morado oscuro/casi negro */
+    color: #f1f5f9;            /* Texto principal en un blanco suave muy legible */
+    padding: 60px 20px 20px 20px;
+    font-family: sans-serif;
+
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-brand {
+    flex: 1 1 400px; /* Le da más espacio a la descripción de la marca */
+    text-align: left;
+}
+
+.footer-brand h3 {
+   font-size: 1.6rem;
+    color: #1b5909f7;            /* Título principal en blanco puro */
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-brand p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Iconos de Redes Sociales */
+.footer-socials a {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+.footer-socials a:hover {
+    transform: scale(1.2);
+}
+
+/* Columnas de Enlaces y Contacto */
+.footer-links-column {
+    flex: 1 1 200px;
+    text-align: left;
+}
+
+.footer-links-column h4 {
+   color: #130d0d;            /* Títulos de las columnas en blanco puro */
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Línea decorativa debajo de los títulos del footer */
+.footer-links-column h4::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 35px; height: 2px;
+    background-color: #8b5cf6; /* Tu color morado principal */
+}
+
+.footer-links-column a, .footer-links-column p {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.footer-links-column a:hover {
+    color: #a78bfa; /* Morado claro al pasar el mouse */
+}
+
+/* Barra inferior de Copyright */
+.footer-bottom {
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #334155; /* Línea sutil de separación */
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* Adaptación para pantallas pequeñas (Celulares) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-brand, .footer-links-column {
+        text-align: center;
+    }
+    .footer-links-column h4::after {
+        left: 50%;
+        transform: translateX(-50%); /* Centra la línea decorativa en celular */
+    }
+}
+
+.btn-regreso-casa {
+    background-color: #1b8a5a;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(27, 138, 90, 0.2);
+}
+
+.btn-regreso-casa:hover {
+    background-color: #146c45;
+}
+
+/* =========================================================
+   CLASES QUE REEMPLAZAN LOS ESTILOS EN LÍNEA (style="...")
+   que estaban sueltos dentro del HTML
+   ========================================================= */
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo-icon {
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.mapa-comunitario-box {
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-badge {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.mensaje-estado {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #57606a;
+    padding: 40px 10px;
+    font-size: 0.95rem;
+}
+
+.modal-descripcion-text {
+    font-style: italic;
+    color: #475569;
+}
+
+.modal-telefono-text {
+    color: var(--purple-main);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* =========================================================
+   MENÚ HAMBURGUESA (para navbar en pantallas pequeñas)
+   ========================================================= */
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 19px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text-dark);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.nav-toggle-activo span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.nav-toggle.nav-toggle-activo span:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle.nav-toggle-activo span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================================================
+   DISEÑO RESPONSIVE GENERAL DEL SITIO
+   Evita que el contenido se deforme al reducir la pantalla.
+   No cambia el diseño en escritorio, solo lo adapta en móvil.
+   ========================================================= */
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .mascotas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .hero-container {
+        gap: 25px;
+        padding: 60px 5%;
+        padding-top: 120px;
+    }
+}
+
+/* Tablets pequeñas / celulares grandes */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .navbar nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px 6%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .navbar nav.nav-abierto {
+        max-height: 400px;
+    }
+
+    .navbar nav a.btn-report-lost {
+        display: inline-block;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-image-box {
+        margin-top: 30px;
+    }
+
+    .img-dog-hero {
+        width: 100%;
+        height: 300px;
+    }
+
+    .floating-badge {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .catalog-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .mascotas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-layout {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .story-layout img {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .navbar .logo {
+        font-size: 1.15rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons a {
+        text-align: center;
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mascotas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .map-section,
+    .catalog-section,
+    .stats-section,
+    .stories-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .mapa-comunitario-box {
+        height: 320px;
+    }
+
+    .footer-brand h3 {
+        justify-content: center;
+    }
+}
